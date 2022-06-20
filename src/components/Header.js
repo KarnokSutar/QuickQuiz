@@ -3,32 +3,38 @@ import QuizContext from '../store/quiz-context';
 import { useContext, useEffect, useState } from 'react';
 
 
+
 function MyTimer(props){
-    const[second, setSecond]=useState(30)
+    const[second, setSecond]=useState(0)
+    const[minute, setMinute]=useState(3)
     // var timer;
 useEffect(()=>{
     var timer = setInterval(() => {
         setSecond(second-1) 
         console.log("running")
      }, 1000);
-     if (second === 0){
-        props.timeOver();
-     }
+     if (second === 0 && minute===0){
+        props.timeOver();}
+        if (second===0){
+            setMinute(minute-1)
+            setSecond(60)
+        }
+     
      return ()=>clearInterval(timer);
 })
  return(
     <div>
-        <span>00:</span>
-        <span>{second}</span>
+        <span>{minute}:</span>
+        { second>9 ? <span>{second}</span>: <span>0{second}</span>}
     </div>
  )
  }
 
 function Header (props){
     const quizCtx = useContext(QuizContext)
+
 function submitHandler(){
    if(quizCtx.pickedAnsAr) { quizCtx.calculatePoint();}
-    console.log(quizCtx.pickedAnsAr)
 props.seeScore();
 }
     return(

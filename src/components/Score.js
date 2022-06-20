@@ -11,7 +11,13 @@ function Score(props){
     if(quizCtx.point>9){banner ="You are a Genius!!!"}
     if(quizCtx.point<5){banner ="LoL!!! You Suck at this Game!"}
     function playAgainHandler(){
-        props.playAgain();
+        console.log("hello")
+        quizCtx.setCorrectAnsArandPickedAnsArraytoNull()
+        console.log(quizCtx.correctAnsAr);
+        propsPlayAgain();
+    }
+    function propsPlayAgain(){
+props.playAgain();
     }
 
     return(

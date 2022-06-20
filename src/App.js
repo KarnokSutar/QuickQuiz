@@ -1,9 +1,10 @@
 import Quizlist from "./components/QuizList";
 import Header from "./components/Header";
-import {useState,useReducer } from "react";
+import {useState,useReducer, useContext } from "react";
 import Button from "./UI/Button";
 import QuizProvider from "./store/QuizProvider";
 import Score from "./components/Score";
+import QuizContext from "./store/quiz-context";
 
 
 const defaultState ={
@@ -67,6 +68,7 @@ const dummy_quizes = [{"id": 0, "category":"Entertainment: Video Games","type":"
 "correct_answer":"False","incorrect_answers":["True","False", "True"]}]
 
 function App() {
+const quizCTX = useContext(QuizContext)
   const[quizes, setTenQuizes] =useState(dummy_quizes);
   const [currentState, dispatchStateAction] = useReducer(
     stateReducer,
@@ -78,6 +80,7 @@ function App() {
     dispatchStateAction({type:"PLAY_AGAIN"})
    }
 async function quizFetchHandler(){
+  console.log(quizCTX.pickedAnsAr);
 dispatchStateAction({type:"CLICKED_START"})
 const response = await fetch('https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple')
 const data = await response.json();

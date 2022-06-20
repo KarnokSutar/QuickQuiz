@@ -5,7 +5,6 @@ import classes from './Quizlist.module.css'
 function Quizlist(props){
   const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
   const  quizes =props.quiz
-  console.log(quizes);
 const quizItem =quizes.map((quiz, index)=>(
     <section className={classes.quizes}><Card> <QuizItem
     id = {index+1}

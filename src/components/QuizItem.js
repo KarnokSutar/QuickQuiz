@@ -1,9 +1,8 @@
-import { Fragment, useContext, useReducer } from "react";
+import { useContext, useReducer } from "react";
 import classes from './QuizItem.module.css'
 import QuizContext from "../store/quiz-context";
-
-const correctAns = []
-const pickedAns = []
+import { Fragment } from "react/cjs/react.production.min";
+//const QuizItemContext = react.createContext();
 const defaultQuizState ={
    selectA : false,
    selectB :false,
@@ -51,10 +50,15 @@ return defaultQuizState;
 
 function QuizItem(props){
 const quizCtx = useContext(QuizContext);
-function ansProvider(){
-    quizCtx.setCorrectAnsAr(correctAns)
-    quizCtx.setPickedAnsAr(pickedAns)
-}
+// function setAnsArtoNull(){
+//     correctAns=[];
+//     pickedAns=[];
+// }
+// function ansProvider(){
+//     quizCtx.setCorrectAnsAr(correctAns)
+//     quizCtx.setPickedAnsAr(pickedAns)
+//     console.log(quizCtx.pickedAnsAr);
+//}
     //const[selectA, setSelect] =useState(false)
     const [quizState, dispatchquizAction] = useReducer(
         quizReducer,
@@ -64,28 +68,19 @@ function ansProvider(){
         console.log(props.id);
         console.log(props.correctAns);
         dispatchquizAction({type:"A"})
-        const id = + props.id;
-  correctAns[id] = props.correctAns;
-   pickedAns[id] = props.options[0];
-   ansProvider();
+  quizCtx.getCorrectandPickedAnsfromQuizItem(props.id, props.correctAns,props.options[0])
     }
     function optionBClickHandler(){
         dispatchquizAction({type:"B"})
-    pickedAns[props.id] = props.options[1];
-    correctAns[props.id] = props.correctAns;
-   ansProvider();
+  quizCtx.getCorrectandPickedAnsfromQuizItem(props.id, props.correctAns,props.options[1])
     }
     function optionCClickHandler(){
         dispatchquizAction({type:"C"})
-    correctAns[props.id] = props.correctAns;
-    pickedAns[props.id] = props.options[2];
-    ansProvider();
+  quizCtx.getCorrectandPickedAnsfromQuizItem(props.id, props.correctAns,props.options[2])
     }
     function optionDClickHandler(){
         dispatchquizAction({type:"D"})
-    correctAns[props.id] = props.correctAns;
-    pickedAns[props.id] = props.options[3];
-    ansProvider();
+        quizCtx.getCorrectandPickedAnsfromQuizItem(props.id, props.correctAns,props.options[3])
     }
 
     return(

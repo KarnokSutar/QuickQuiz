@@ -5,7 +5,9 @@ correctAnsAr:[],
 pickedAnsAr:[],
 point:0,
 calculatePoint: ()=>{},
-setCorrectAnsAr: ()=>{},
+getCorrectandPickedAnsfromQuizItem:(id, correctAns,PickedAns)=>{},
+setCorrectAnsArandPickedAnsArraytoNull: ()=>{},
+setCorrectAnsAr:()=>{},
 setPickedAnsAr:()=>{}
 }
 )
