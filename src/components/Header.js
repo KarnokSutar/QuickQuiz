@@ -21,7 +21,7 @@ useEffect(()=>{
         }
      
      return ()=>clearInterval(timer);
-})
+}, [minute, second, props])
  return(
     <div>
         <span>{minute}:</span>
