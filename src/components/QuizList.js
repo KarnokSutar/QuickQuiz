@@ -1,24 +1,30 @@
 import QuizItem from './QuizItem'
 import Card from '../UI/Card';
 import classes from './Quizlist.module.css'
-//const i = 0;
+import { useContext } from 'react';
+import QuizContext from '../store/quiz-context';
+import FabButton from './FabButton';
 function Quizlist(props){
-  const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
-  const  quizes =props.quiz
-const quizItem =quizes.map((quiz, index)=>(
-    <section className={classes.quizes}><Card> <QuizItem
-    id = {index+1}
+const quizCtx = useContext(QuizContext);
+const quizItem = quizCtx.questions.map((quiz)=>(
+  <section className={classes.quizes}><Card> <QuizItem
+    id = {quiz.id}
     question ={quiz.question}
-    correctAns={quiz.correct_answer}
-    options ={shuffle([...quiz.incorrect_answers, quiz.correct_answer])}
+    correctAns={quiz.correctAns}
+    options ={quiz.options}
     ></QuizItem> </Card>
     </section>
-));
-
+))
+function submitHandler(){
+  if(quizCtx.pickedAnsAr) { quizCtx.calculatePoint();}
+props.seeScore();
+}
+console.log(quizCtx.questions);
 return(
-        <ul>
-    {quizItem}
-    </ul>
+      <div className={classes.container}>
+    {quizCtx.quizLoading ? <div className={classes.background}><div className={classes.backdrop}> <div className={classes.loader}/></div></div>: <ul>{quizItem}</ul>}
+<FabButton onClick={submitHandler}/>
+    </div> 
 
 )
 

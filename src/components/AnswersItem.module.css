@@ -1,13 +1,18 @@
-  .question {
+.question {
     margin-top: 10px;
     background-color: #9B59B6;
     color: white;
     padding: 20px;
     flex: auto;
-    text-emphasis: none;
-    text-align: left;
-    height: fit-content;
-
+    text-emphasis: none;;
+}
+.wrongAnswer {
+    margin-top: 10px;
+    background-color: rgb(247, 7, 7);
+    color: white;
+    padding: 20px;
+    flex: auto;
+    text-emphasis: none;;
 }
 .answers{
     margin-top: 40px;  
@@ -32,7 +37,6 @@
   transition: color .3s ease, border-color .3s ease, transform .3s ease;
   cursor: pointer;
 }
-
 .options span {
   background-color: #9B59B6;
   color: #fff;
@@ -55,9 +59,9 @@
   transition: color .3s ease;
 }
 
-.onselect{
-  background-color: #9B59B6;
-  border: 2px solid #9B59B6;
+.correctOption{
+  background-color: #fff;
+  border: 2px solid rgb(7, 247, 55);
   min-height: 30px;
   margin-right: 10px;
   margin-top: 10Px;
@@ -67,9 +71,9 @@
   transition: color .3s ease, border-color .3s ease, transform .3s ease;
   cursor: pointer;
 }
-.onselect span {
-  background-color: #fff;
-  color: #9B59B6;
+.correctOption span {
+  background-color: rgb(7, 247, 55);
+  color: #fff;
   padding: 10px;
   font-size: 20px;
   flex: 50px;
@@ -79,8 +83,8 @@
   transition: background-color .3s ease;
 }
 
-.onselect p {
-  color: #fff;
+.correctOption p {
+  color: rgb(7, 247, 55);
   font-size: 15px;
   padding: 10px;
   font-weight: 600;
@@ -89,11 +93,50 @@
   transition: color .3s ease;
 }
 
-@media(max-width:600px){
-  .options {
-    width: 100%;
+
+  .incorrectOption{
+    background-color: #fff;
+    border: 2px solid rgb(247, 7, 7);
+    min-height: 30px;
+    margin-right: 10px;
+    margin-top: 10Px;
+    width: 45%;
+    display: flex;
+    margin-bottom: 10px;
+    transition: color .3s ease, border-color .3s ease, transform .3s ease;
+    cursor: pointer;
   }
-  .onselect {
-    width: 100%;
+   .incorrectOption span {
+    background-color: rgb(247, 7, 7);
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+    flex: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .3s ease;
   }
-}
+  
+  .incorrectOption p {
+    color: rgb(247, 7, 7);
+    font-size: 15px;
+    padding: 10px;
+    font-weight: 600;
+    flex: calc(100% - 75px);
+    margin: auto 20px;
+    transition: color .3s ease;
+  }
+  @media(max-width:600px){
+ 
+    .correctOption {
+      width: 100%;
+    }
+    .incorrectOption {
+      width: 100%;
+    }
+    .options {
+      width: 100%;
+    }
+  
+  }

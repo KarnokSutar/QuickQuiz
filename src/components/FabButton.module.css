@@ -1,0 +1,34 @@
+.container{
+display: none;
+} 
+
+  @media(max-width:600px){
+    .container{
+        display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-direction: column-reverse;
+      position: fixed;
+      right: 2em;
+      bottom: 2em;
+      max-height: 52px;
+    }
+    .container span {
+      background-color: #9B59B6;
+      padding: 0 10%;
+    box-shadow: 8px 2px 8px rgba(0, 0, 0, 0.25);
+      color: #fff;
+      padding: 10px;
+      font-size: 20px;
+      flex: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color .3s ease;
+    }
+    .container span:hover {
+      background-color: #4CAF50; /* Green */
+      color: white;
+    }
+  }

@@ -1,65 +1,71 @@
+.body {
+	background-color: #f4f4f4;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	align-items: center;
+  display: flex;
+	justify-content: center;
+	height: 100vh;
+  box-sizing: border-box;
+}
 .score{
-    margin: auto;
+  flex: 1;
     width: 50%;
-    color: azure;
-    font-size: 60px;
+    color: #9B59B6;
+    font-size: 30px;
     font-weight: bolder;
-    border: 10px solid green;
-    padding: 10px;
-    cursor: pointer;
+    border: 10px solid #9B59B6;
+    text-align: center;
+    padding: 30px;
     background-color: transparent;
     }
-
-
-.center{
-    margin-top: 10%;
-    text-align: center;
-}
 .quizes {
   margin-top: 18%;
   text-align: center;
   max-width: 60rem;
   width:40%;
+  flex: 1;
   margin: 5rem auto;
   animation: quizes-appear 1s ease-out forwards;
 }
-
-.quizes ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 @keyframes quizes-appear {
   from {
+
+
     opacity: 0;
     transform: translateY(-1);
   }
 
   to {
     opacity: 1;
-    transform: translateY(8rem);
+    transform: translateY(4rem);
   }
 }
 
 .banner{
   margin: auto;
   width: 50%;
-  color: black;
-  font-size: 20px;
+  min-width: fit-content;
+  color: #9B59B6;
+  font-size: 15px;
   font-weight: bolder;
-  padding: 10px;
   background-color: transparent;
+  border: solid #9B59B6;
+  padding-right: 20px;
+  padding-left: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  
 
 }
 .button{
-  margin-top: 2rem;
-  width: 10rem;
+  width: auto;
   color: white;
+  max-height: 60px;
   font-size: medium;
   font-weight: bolder;
-  border: 5px solid rgb(221, 216, 232);
   border-radius: 8px;
+  margin-right: 10px;
   padding: 10px;
   cursor: pointer;
   background-color: #616A94;
@@ -68,5 +74,26 @@
     .button:hover {
       background-color: #4CAF50; /* Green */
       color: white;
+    }
+
+    .center{
+      position: relative;
+      margin:auto
+    }
+    .buttonContainer{
+      flex: 2;
+      margin-top: 20px;
+    }
+
+    @media(max-width:600px){
+      .score{
+          width: fit-content;
+          }
+      .banner{
+            width: fit-content;
+          }
+          .quizes {
+            width: fit-content;
+          }  
     }
 
